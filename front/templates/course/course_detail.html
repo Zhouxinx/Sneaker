@@ -1,0 +1,252 @@
+{% extends 'base/front_base.html' %}
+
+{% block title %}
+    球鞋列表页
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/course/course_detail.min.css' %}">
+    <script src="{% static 'videojs/video.min.js' %}"></script>
+<script src="{% static 'videojs/videojs-contrib-hls.min.js' %}"></script>
+<script src="{% static 'videojs/videojs-contrib-quality-levels.min.js' %}"></script>
+<script type="text/javascript" src="https://cdn.bdstatic.com/jwplayer/latest/cyberplayer.js"></script>
+    <script src="{% static 'js/course_detail.min.js' %}"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="course-nav">
+            <div class="nav-container">
+                <h3 class="title">球鞋</h3>
+                <ul class="nav-list">
+                    <li class="active"><a href="#">立即购买</a></li>
+                    <li><a href="#">球鞋制作人</a></li>
+                    <li><a href="#">鞋款介绍</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="course-wrapper">
+                <div class="course-info">
+                    <p class="course-title">{{ course.category.name }}{{ course.title }}</p>
+                    <div class="price-group">
+                        <div class="share-group">
+                            <span class="title">正品保证</span>
+                            <span class="title">急速退款</span>
+                            <span class="title">赠运费险</span>
+                            <span class="title">七天无理由退款</span>
+                        </div>
+                        <div class="buy-group">
+                            <!-- <span class="price pay">￥49.0</span>
+                            <a href="#" class="buy-btn">立即购买</a> -->
+                            {% if course.price > 0 %}
+                                {% if not buyed %}
+                                    <span class="price pay">￥{{ course.price }}</span>
+                                    <a href="{% url 'course:course_order' course_id=course.pk %}" class="buy-btn">立即购买</a>
+                                {% endif %}
+                            {% else %}
+                                <span class="price free">免费</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="video-group">
+{#                    <span id="video-info" hidden data-video-url="{{ course.video_url }}" data-cover-url="{{ course.cover_url }}" data-course-id="{{ course.pk }}"></span>#}
+{#                    <div id="playercontainer"></div>#}
+                    <img src="{{ course.cover_url }}" alt="" class="src">
+                </div>
+            </div>
+            <div class="bottom-wrapper">
+                <div class="course-detail-wrapper">
+                    <div class="item-group">
+                        <p class="item-title">球鞋制作人</p>
+                        <div class="teacher-group">
+                            <div class="avatar-group">
+                                <img src="{{ course.teacher.avatar }}" alt="" class="avatar">
+                            </div>
+                            <div class="teacher-info">
+                                <p class="teacher-name">{{ course.teacher.username }}</p>
+                                <p class="teacher-desc">{{ course.teacher.jobtitle }}</p>
+                            </div>
+                        </div>
+                        <p class="item-content">{{ course.teacher.profile }}</p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">鞋款介绍</p>
+                        <p class="item-content">{{ course.profile|safe }}</p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">温馨提示</p>
+                        <p class="item-content">
+                            1. 关于商品：
+                                由于生产批次、产地的不同以及商品更新升级和品牌方图片调整，实物的材质、外观细节、配件和包装等可能与商品图片存在细微差异，具体请以收到的实物为准。如商品上绑有调包扣，请您收到货后先确认商品无误再进行拆除。 <br>
+                            2. 关于色差：
+                                因手机、电脑等显示设备的色彩偏差和个人对颜色理解等不同，导致实物可能会与照片存在一定色差，请您以收到的实物为准。<br>
+                            3. 关于气味：新商品可能会存在一些气味，这些气味来自材料、鞋底、胶水等，您可以将商品放置在通风处一段时间，减少气味后再穿着。<br>
+                            4. 关于尺码：商品详情页的尺码表仅供参考，由于品牌尺码标准、产品款型及测量方法不同，商品实际尺寸可能会存在些许误差，均属于正常情况。<br>
+                            5. 保养说明：请定期清洁鞋子，针对不同材质与工艺进行清洁与保养，可以使用干净柔软白色湿润棉布或软毛刷擦拭鞋面，最好使用专业鞋类清洁剂，切勿使用刷子猛刷；避免浸水，曝晒及火烤，清洁后可用纸巾包裹放置干燥通风处，避免阳光暴晒以免引起老化、变形、褪色及断裂。<br>
+                        </p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">尺码参考</p>
+                        <p class="item-content">目前仅提供42的尺码
+                            CHN 260 / FR 42 / UK 8
+                        </p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">帮助中心</p>
+                        <p class="item-content">
+                            1. 网站支付功能现在仅供测试使用，请不要点击购买。 <br>
+                            2. 网站暂时未上架尺码功能，球鞋定价请参考市场价格。 <br>
+                            3. 如有问题请咨询作者： 电话：18202894350   微信：Colorzx <br>
+                        </p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">关于Sneaker</p>
+                        <p class="item-content">
+                            本网站是最大最专业的SNEAKER资讯和信息交流社区,有最新的潮流新闻、球鞋发售信息,也有SNEAKER爱好者的交流。信息覆盖NIKE、ADIDAS、AIR JORDAN、NEW BALANCE等潮流球鞋
+                        </p>
+                    </div>
+                </div>
+                <div class="recommand-wrapper">
+                    <p class="recommand-title">推荐鞋款</p>
+                    <ul class="course-list">
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #454548">Black黑满天星</p>
+                                   <p class="teacher">adidas Originals yeezy 350 V2 Boost</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/timg%20(1).jpg" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #b1aca9">True Form</p>
+                                   <p class="teacher">adidas Originals yeezy 350 V2 Boost</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/hX7gybuBQ2eAtNKsriGg_image_wh_840x523.jpeg" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #ebe6e3">Analog</p>
+                                   <p class="teacher">YEEZY BOOST 700</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/yeezy-boost-700-analog-official-look-1.jpg" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color:#3d3d3d">Vanta</p>
+                                   <p class="teacher">YEEZY BOOST 700 V2</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/adidas-yeezy-boost-700-v2-vanta-updated-release-date-1.jpg" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #374f37">Dog Walker</p>
+                                   <p class="teacher">Dunk SB HIGH</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/248-1Z4151HJ0-51.png" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #29282e">Nike Air FOG 180 </p>
+                                   <p class="teacher">Fear of God x Nike</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/6-1Z303105335.jpg" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #a72b42">白</p>
+                                   <p class="teacher">UNDEFEATED x Nike Air Max</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/82.jpg" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #3e3223">倒钩</p>
+                                   <p class="teacher"> Travis Scott x Air Jordan I </p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/ad7fc8bce33a45b6b5b5e8d32767e6ee.JPG" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #cdcdaa"> Antlia (Reflective)</p>
+                                   <p class="teacher">Adidas Yeezy Boost 350 V2</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/35cfcb7e57fd4b1598a2afc8ed936f1a.JPG" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #5c2e50">Elite Marathon </p>
+                                   <p class="teacher">Nike Zoom VaporFly </p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/46cd5f43f0e14ea8bf36ff0139983c89.JPG" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #171513">'Charlotte Hornets Foundation' (White) </p>
+                                   <p class="teacher">Air Jordan I High</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/df84273882aa4f4cae327146d26c7aea.JPG" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                   <p class="course-title" style="color: #232743">'Michigan' PE</p>
+                                   <p class="teacher"> Air Jordan IV</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img src="../../../media/512c7ccb1d654f86bad4b0afd82f4f49.JPG" alt="" class="thumbnail">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
