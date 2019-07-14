@@ -30,6 +30,7 @@
 
 ## 鞋款详情：
 ![鞋款详情](https://img-blog.csdnimg.cn/20190714110234421.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNjU1NjYz,size_16,color_FFFFFF,t_70)
+
 1. 鞋款详情页面是点击球鞋发售页面进入的
 2. 鞋款详情页都有其对应的球鞋制作者、鞋款介绍、售前售后注意事项、尺码参考和帮助中心的内容
 3. 此外还提供了根据搜索的鞋款类型智能推荐同类型、同系列的鞋款，进一步满足用户的需求。
