@@ -29,6 +29,7 @@
 1. 球鞋资讯页面主要为用户提供鞋款发售、穿衣搭配，用户交流等最新资讯。此外还提供了用户评论、相关文章推荐的功能。
 
 ## 鞋款详情：
+
 ![鞋款详情](https://img-blog.csdnimg.cn/20190714110234421.png)
 
 1. 鞋款详情页面是点击球鞋发售页面进入的
@@ -50,5 +51,6 @@
 1. 网站支付功能现在仅供测试使用，请不要点击购买。 
 2. 网站暂时未上架尺码功能，球鞋定价请参考市场价格。 
 3. 如有问题请咨询作者： 电话：18202894350 微信：Colorzx 
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190713194334572.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNjU1NjYz,size_16,color_FFFFFF,t_70)
 
